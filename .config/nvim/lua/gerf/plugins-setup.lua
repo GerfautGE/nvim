@@ -98,6 +98,18 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+    
+    --github Copilot
+    use {
+        "zbirenbaum/copilot.lua",
+        event = "VimEnter",
+        config = function()
+        vim.defer_fn(function()
+        require("copilot").setup()
+        end, 100)
+    end,
+    }
+
 
 	if packer_bootstrap then
 		require("packer").sync()
